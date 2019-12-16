@@ -1,0 +1,56 @@
+﻿@model WebApplication2.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+}
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryui")
+@Styles.Render("~/Content/themes/base/css")
+
+<script>
+    $(function () {
+        alert("sdlf");
+        $("#DatePick").datepicker();
+    });
+</script>
+
+<script>
+    function load() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("demo").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "http://localhost:55519/Handler1.ashx", true);
+        xhttp.send();
+    }
+</script>
+<h2>Details</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<button type="button" onclick="load()">Load Handler</button>
+<div id="demo">
+    <p></p>
+</div>
+<table class="text-center" style="border-spacing:2px;border:5px solid black">
+
+    <tr>
+        <td><b>ID</b></td>
+        <td>@Model.ID</td>
+    </tr>
+    <tr>
+        <td><b>Name</b></td>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <td><b>Surname</b></td>
+        <td>@Model.Surname</td>
+    </tr>
+    <tr>
+        <td><b>City</b></td>
+        <td>@Model.City</td>
+    </tr>
+</table>

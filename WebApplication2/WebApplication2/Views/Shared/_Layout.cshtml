@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @* jQueryUI Example. CSS*@
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @* jQueryUI Example. jQuery..*@
+    @Scripts.Render("~/bundles/jqueryui")
+    
+</head>
+<body style="background-image:url(../../Content/images/dark_web.jpg);background-position:center;background-attachment:fixed;background-repeat:no-repeat;background-size:cover;backface-visibility:inherit;color:azure;">
+    @* Navbar Using Bootstrap 4.. *@
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <img class="navbar-brand rounded-pill" src="~/Content/images/OceanTechLogo.png" style="height:80px;width:100px"/>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Products
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">CRM</a>
+                            <a class="dropdown-item" href="#">Inventory Control</a>
+                            <a class="dropdown-item" href="#">IoT Devices</a>                           
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>                    
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <select name="language" id="language" class="btn" onchange="alert(document.getElementById('language').value)">
+                        <option value="none">Select Language</option>
+                        <option value="hi-IN">Hindi</option>
+                        <option value="en-in">English</option>
+                    </select>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="container body-content" style="margin-top:1%">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

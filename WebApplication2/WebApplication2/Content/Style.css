@@ -1,0 +1,12 @@
+﻿.showme {
+    display: none;
+}
+.s{
+    color:red;
+}
+.s:hover .showme{
+    display:block;
+}
+.show:hover .showme {
+    display: block;
+}

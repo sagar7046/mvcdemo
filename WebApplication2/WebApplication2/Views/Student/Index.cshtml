@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebApplication2.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+@Styles.Render("~/Content/Style.css")
+@Scripts.Render("~/bundles/jquery")
+
+
+<script>
+    function load(id) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("display").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "http://localhost:55519/Handler1.ashx?name="+id, true);
+        xhttp.send();
+    }    
+</script>
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<ul>
+    @foreach (var item in Model)
+    {               
+        <li>
+            @Html.ActionLink(item.Name, "Details", new { item.Name })                  
+            <button type="button" onclick="load('@item.Name')">@item.Name</button>
+        </li>
+    }    
+</ul>
+<div id="display">
+    <p></p>
+</div>
+
+

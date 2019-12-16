@@ -1,0 +1,84 @@
+﻿@model IEnumerable<WebApplication2.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Student List</h2>
+
+<p>    
+    <button class="btn btn-outline-warning" onclick="location.href='@Url.Action("Create", "Students")'">Add Student</button>
+</p>
+<table class="table table-striped bg-light" style="color:aliceblue">
+    <tr class="bg-primary">
+        @*<th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            Operation
+        </th>
+    </tr>
+    @{
+        int cnt = 0;
+        foreach (var item in Model)
+        {
+            if (cnt % 2 == 0)
+            {
+                <tr class="bg-dark">
+                    @*<td style="font-family:Georgia;font-style:oblique">
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>*@
+                    <td style="font-family:Georgia;font-style:oblique">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td style="font-family:Georgia;font-style:oblique">
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td style="font-family:Georgia;font-style:oblique">
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-warning" onclick="location.href='@Url.Action("Edit", "Students",new { id=item.ID })'">Edit</button> |
+                        <button class="btn btn-outline-light" onclick="location.href='@Url.Action("Details", "Students",new { id=item.ID })'">Details</button> |
+                        <button class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete", "Students",new { id=item.ID })'">Delete</button>                        
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr class="bg-info">
+                    @*<td style="font-family:Georgia;font-style:oblique">
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>*@
+                    <td style="font-family:Georgia;font-style:oblique">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td style="font-family:Georgia;font-style:oblique">
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td style="font-family:Georgia;font-style:oblique">
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-warning" onclick="location.href='@Url.Action("Edit", "Students",new { id=item.ID })'">Edit</button> |
+                        <button class="btn btn-outline-light" onclick="location.href='@Url.Action("Details", "Students",new { id=item.ID })'">Details</button> |
+                        <button class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete", "Students",new { id=item.ID })'">Delete</button>                        
+                    </td>
+                </tr>
+                
+            }
+            cnt++;
+
+        }
+
+    }
+</table>
