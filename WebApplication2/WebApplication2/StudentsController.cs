@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,11 +7,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Http.Cors;
 using WebApplication2.Models;
 
 namespace WebApplication2
 {
-    public class StudentsController : Controller
+    #region Controller
+    [EnableCors(origins: "http://localhost:4200/", headers: "*", methods: "*",SupportsCredentials =true)]    
+    public class StudentsController : System.Web.Mvc.Controller
     {
         private StudentContext db = new StudentContext();
 
@@ -124,5 +128,24 @@ namespace WebApplication2
             }
             base.Dispose(disposing);
         }
+
+        [HttpGet]
+        public ActionResult Show()
+        {
+            return Json(db.StudentList.ToList(), JsonRequestBehavior.AllowGet);
+        }
+        
+        [HttpGet]        
+        public ActionResult ShowList(string name)
+        {
+            return Json(db.StudentList.Single(stud=>stud.Name==name), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult ChangeLanguage(string language)
+        {
+            return Json(language,JsonRequestBehavior.AllowGet);
+        }
     }
+#endregion
 }

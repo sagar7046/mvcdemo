@@ -10,7 +10,7 @@ using WebApplication2.Models;
 
 namespace WebApplication2
 {
-    public class EmployeesController : Controller
+    public class EmployeesController : System.Web.Mvc.Controller
     {
         private StudentContext db = new StudentContext();
 

@@ -11,6 +11,14 @@
     @* jQueryUI Example. jQuery..*@
     @Scripts.Render("~/bundles/jqueryui")
     
+    <script>
+        function changeLangauage(lang)
+        {
+            var l = lang;
+            location.href = 'http://localhost:55519/Students/ChangeLanguage?language=' + lang;
+        }
+    </script>
+
 </head>
 <body style="background-image:url(../../Content/images/dark_web.jpg);background-position:center;background-attachment:fixed;background-repeat:no-repeat;background-size:cover;backface-visibility:inherit;color:azure;">
     @* Navbar Using Bootstrap 4.. *@
@@ -40,7 +48,7 @@
                     </li>                    
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <select name="language" id="language" class="btn" onchange="alert(document.getElementById('language').value)">
+                    <select name="language" id="language" class="btn" onchange="changeLangauage(document.getElementById('language').value)">
                         <option value="none">Select Language</option>
                         <option value="hi-IN">Hindi</option>
                         <option value="en-in">English</option>

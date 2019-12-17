@@ -7,15 +7,13 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
-    public class StudentController : Controller
+    public class StudentController : System.Web.Mvc.Controller
     {
         StudentContext studentContext = new StudentContext();
         // GET: Student
         public ActionResult Details(string name)
-        {
-            //StudentContext studentContext = new StudentContext();
-            Student student= studentContext.StudentList.Single(stud => stud.Name == name);            
-            //
+        {            
+            Student student= studentContext.StudentList.Single(stud => stud.Name == name);           
             return View(student);
         }
         public ActionResult Index()
@@ -37,7 +35,7 @@ namespace WebApplication2.Controllers
             return View();
         }
 
-
+        [HttpGet]
         public ActionResult Show()
         {              
             
